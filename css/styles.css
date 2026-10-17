@@ -201,7 +201,7 @@ html,body{overflow-x:clip}
 .nx-facts dt{font-size:13px;color:#E8C9EE;margin-bottom:4px}
 .nx-facts dd{margin:0;font-weight:500}
 .nx-media{max-width:1100px;margin:0 auto}
-.nx-media .pj-phone{width:190px;background:#000}
+.nx-media .pj-phone{--pw:190px;background:#000}
 .nx-sub{margin:72px 0 28px;font-size:28px;font-weight:700}
 .nx-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid rgba(255,255,255,.35)}
 .nx-item{padding:28px 28px 30px 0;border-bottom:1px solid rgba(255,255,255,.35)}
@@ -229,7 +229,8 @@ html,body{overflow-x:clip}
 .pj.flip .pj-media{order:2}
 .pj-media{position:relative;padding:0 56px 48px 0}
 .pj.flip .pj-media{padding:0 0 48px 56px}
-.pj-phone{position:absolute;right:0;bottom:0;width:150px;aspect-ratio:9/19;overflow-y:auto;border:6px solid #111;border-radius:24px;background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.55);scrollbar-width:none}
+/* Alto explícito: Safari de iOS ignora aspect-ratio aquí y el móvil crecía hasta el alto de la captura */
+.pj-phone{--pw:150px;position:absolute;right:0;bottom:0;width:var(--pw);height:calc(var(--pw) * 19 / 9);min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;border:6px solid #111;border-radius:24px;background:#fff;box-shadow:0 20px 40px rgba(0,0,0,.55);scrollbar-width:none}
 .pj-phone::-webkit-scrollbar{display:none}
 .pj.flip .pj-phone{right:auto;left:0}
 .pj-phone img{width:100%;height:auto}
@@ -273,7 +274,7 @@ html,body{overflow-x:clip}
   .pj.flip .pj-media{order:0}
   .pj-media,.pj.flip .pj-media{padding:0 40px 40px 0}
   .pj.flip .pj-phone{left:auto;right:0}
-  .pj-phone{width:110px;border-width:5px;border-radius:18px}
+  .pj-phone{--pw:110px;border-width:5px;border-radius:18px}
   .pj-view{height:320px}
   .pj-meta{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
 }
@@ -318,7 +319,7 @@ html,body{overflow-x:clip}
   .cursor{animation:none}
   .feat .desk,.hx-media img,.fc-img img,.fc-arrow{transition:none}
 }
-@media (max-width:900px){.nx-media .pj-phone{width:120px}}
+@media (max-width:900px){.nx-media .pj-phone{--pw:120px}}
 
 /* ================= Movimiento ================= */
 /* Barra de progreso de scroll */
